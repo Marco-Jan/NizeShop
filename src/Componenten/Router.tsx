@@ -1,17 +1,23 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootElement from './RootElement';
-import Shop from './Shop';
+// import Shop from './Shop';
+import Navbar from './Navbar';
+import Homepage from './Homepage';
+import ProductList from './ProductList';
 
 export default function Router() {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <RootElement />
+            element: <Navbar />
             ,
             children: [
                 {
+                    path: "/",
+                    element: <Homepage />
+                },
+                {
                     path: "/shop",
-                    element: <Shop />
+                    element: <ProductList />
                 }
             ]
         }]);

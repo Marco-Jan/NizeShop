@@ -1,10 +1,10 @@
+import styled from 'styled-components';
 
+const CenteredShopTitle = styled.h1`
+  text-align: center;
+  color: blue;
+`;
 
-export default function Shop() {
-
-    return (
-        <>
-            <h1>Der Shop</h1>
-        </>
-    )
+export default function Home() {
+  return <CenteredShopTitle>Willkommen im Shop</CenteredShopTitle>;
 }

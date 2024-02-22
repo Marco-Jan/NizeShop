@@ -1,14 +1,16 @@
 export type Product = {
+    title: string | undefined;
+    image: string | undefined;
     id: number;
-    name: string;
     description: string;
     brand: string;
     price: string;
     category: string;
+    quantity: number;
 };
 
-export async function getMovies() {
-    let product: Product[] = await fetch("http://localhost:5001/products").then(
+export async function getProducts() {
+    const product: Product[] = await fetch("https://fakestoreapi.com/products").then(
         (res) => res.json() 
     );
     

@@ -77,7 +77,7 @@ export default function ProductList() {
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'center', paddingBottom: '16px' }}>
                   <Button
-                    sx={{ color: 'white', '&:hover': { backgroundColor: '#505050' } }}
+                    sx={{ color: 'white', '&:hover': { backgroundColor: '#b3cde0' } }}
                     onClick={() => handleAddToCart(product)}
                     variant='contained'
                     color='secondary'

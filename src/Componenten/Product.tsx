@@ -63,8 +63,18 @@ export default function Product() {
           <Typography variant="h4">{product.title}</Typography>
           <Typography variant="body1">{product.description}</Typography>
           <Typography variant="h5">${product.price}</Typography>
-          <Button variant="contained" sx={{margin:'30px'}} onClick={handleAddToCart}>Add to cart</Button>
-          <Button variant="contained" sx={{margin:'30px'}} onClick={() => navigate(-1)}>Back to shop</Button>
+          <Button variant="contained" color="secondary" sx={{
+            margin: '30px', 
+            '&:hover': {
+              backgroundColor: '#b3cde0',
+            },
+          }} onClick={handleAddToCart}>Add to cart</Button>
+          <Button variant="contained" sx={{
+            margin: '30px', 
+            '&:hover': {
+              backgroundColor: '#default',
+            },
+          }} onClick={() => navigate(-1)}>Back to shop</Button>
         </Box>
       </Grid>
     </Grid>

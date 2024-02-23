@@ -28,7 +28,7 @@ const HomepageTitle = styled.h1`
 const CenteredContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px; 
+  margin-top: 20px;
 `;
 
 
@@ -74,7 +74,7 @@ export default function Home() {
           Shop
         </Button>
       </CenteredContainer>
-      <div style={{ maxWidth: '1200px', margin: '40px auto', padding: '10px', backgroundColor: 'rgba(255,255,255,0.4)' }}>
+      <div style={{ width: '80%', margin: '40px auto', padding: '20px 150px', backgroundColor: 'rgba(255,255,255,0.4)' }}>
         <Typography variant="h4" gutterBottom sx={{ color: '#213547', textAlign: 'center', marginBottom: '20px' }}>
           Aktuelle Angebote
         </Typography>

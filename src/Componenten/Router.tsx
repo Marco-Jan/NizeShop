@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Homepage from './Homepage';
 import ProductList from './Shop';
 import ErrorPage from './ErrorComponent';
-import ProductCart from './ShoppingCart';
+import ShoppingCart from './ShoppingCart';
 
 
 
@@ -26,16 +26,7 @@ export default function Router() {
                 },
                 {
                     path: "/cart",
-                    element: <ProductCart product={{
-                        title: undefined,
-                        image: undefined,
-                        id: 0,
-                        name: '',
-                        description: '',
-                        brand: '',
-                        price: '',
-                        category: ''
-                    }} />,
+                    element: <ShoppingCart />,
                     errorElement: <ErrorPage />
                 },
                 

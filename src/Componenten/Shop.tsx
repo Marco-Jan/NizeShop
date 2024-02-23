@@ -20,7 +20,7 @@ export default function ProductList() {
   }, []);
 
   const handleAddToCart = (product: Product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: { id: product.id, title: product.title!, price: parseFloat(product.price), quantity: 1 } });   
+    dispatch({ type: 'ADD_TO_CART', payload: { id: product.id, title: product.title!, price: product.price, quantity: 1 } });   
      console.log('Product added to cart:', product);
     
   };

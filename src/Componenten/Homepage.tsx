@@ -31,9 +31,7 @@ const CenteredContainer = styled.div`
   margin-top: 20px; 
 `;
 
-const ShopBtn = styled(Button)`
-  
-`;
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -63,10 +61,18 @@ export default function Home() {
     <>
       <HomepageTitle>"Entdecke den NizeShop: Deine Quelle für trendige Produkte und coole Gadgets!"</HomepageTitle>
       <CenteredContainer>
-        <ShopBtn
+        <Button
           variant="contained"
+          color="secondary"
+          sx={{
+            '&:hover': {
+              backgroundColor: '#b3cde0',
+            },
+          }}
           onClick={() => navigate('/shop')}
-        >Shop</ShopBtn>
+        >
+          Shop
+        </Button>
       </CenteredContainer>
       <div style={{ maxWidth: '1200px', margin: '40px auto', padding: '10px', backgroundColor: 'rgba(255,255,255,0.4)' }}>
         <Typography variant="h4" gutterBottom sx={{ color: '#213547', textAlign: 'center', marginBottom: '20px' }}>
@@ -93,15 +99,15 @@ export default function Home() {
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'center', paddingBottom: '16px' }}>
                   <Button
-                    sx={{ m: 1, color: 'white', '&:hover': { backgroundColor: 'primary' } }}
+                    sx={{ m: 1, color: 'white', '&:hover': { backgroundColor: '#b3cde0' } }}
                     onClick={() => handleAddToCart(product)}
                     variant='contained'
                     color='secondary'
                   >
                     Add to Cart
                   </Button>
-                
-                {/* <Button
+
+                  {/* <Button
                   sx={{ m: 1, backgroundColor: '#557C55', color: 'white', '&:hover': { backgroundColor: '#355E35' } }}
                   onClick={() => navigate(`/product/${product.id}`)}
                 >

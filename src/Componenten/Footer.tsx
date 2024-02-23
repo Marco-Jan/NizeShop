@@ -20,7 +20,7 @@ const Footer = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" gutterBottom>
-              Mein Shop
+              NizeShop
             </Typography>
             <Typography>
               Die beste Auswahl an Produkten für dich. Besuche uns auf unseren sozialen Netzwerken.
@@ -31,7 +31,7 @@ const Footer = () => {
               Kontakt
             </Typography>
             <Typography>
-              E-Mail: kontakt@meinshop.com
+              E-Mail: office@nizeshop.at
             </Typography>
             <Typography>
               Telefon: +123 456 7890

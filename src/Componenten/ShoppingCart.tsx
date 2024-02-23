@@ -1,9 +1,10 @@
 import { useCart } from './CartContext';
-import { Card, CardContent, Typography, CardActions, IconButton, Grid, Box, Button } from '@mui/material';
+import { Card, CardContent, Typography, CardActions, IconButton, Grid, Box, Button, CardMedia } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from 'react-router-dom';
+
 
 
 export default function ShoppingCart() {
@@ -27,16 +28,22 @@ export default function ShoppingCart() {
 
 
   return (
-    <Box sx={{ flexGrow: 1, m: 3, color: '#213547'}}>
+    <Box sx={{ flexGrow: 1, m: 3, color: '#213547' }}>
       <Typography variant="h4" gutterBottom>
         Warenkorb
       </Typography>
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={8}>
+      <Grid container spacing={4} >
+        <Grid item xs={12} md={8} sx={{ p: 3 }}>
           {state.cart.length > 0 ? (
             state.cart.map((item) => (
-              <Card key={item.id} sx={{ mb: 1 }}>
-                <CardContent>
+              <Card key={item.id} sx={{ mb: 1, display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '34px' }}>
+                <CardMedia
+                  component="img"
+                  sx={{ width: 150, height: 150, objectFit: 'contain' }}
+                  image={item.image}
+                  alt={item.title}
+                />
+                <CardContent sx={{ flex: '1 1 auto' }}>
                   <Typography variant="h5" component="div">
                     {item.title}
                   </Typography>
@@ -64,7 +71,7 @@ export default function ShoppingCart() {
             <Typography>Dein Warenkorb ist leer.</Typography>
           )}
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} sx={{ bgcolor: 'white', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'start', padding: 0 }}>
           <Card sx={{ mb: 2 }}>
             <CardContent>
               <CardActions sx={{ justifyContent: 'flex-end' }}>

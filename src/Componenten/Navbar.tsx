@@ -9,14 +9,14 @@ export default function Navbar() {
     return (
         <>
             <Box className="content" sx={{ flexGrow: 1 }}>
-                <AppBar position="sticky" sx={{ backgroundColor: '#fff', color: '#333', fontSize: '20px', fontWeight: '500' }}> {/* Ändere hier die Hintergrundfarbe zu Weiß und die Textfarbe zu einem dunklen Grau */}
+                <AppBar position="sticky" sx={{ backgroundColor: '#fff', color: '#333', fontSize: '1.2em', fontWeight: '500' }}>
                     <Toolbar>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'inherit', marginLeft: '3em' }}> {/* Stelle sicher, dass die Farbe der Typografie ebenfalls angepasst ist, falls notwendig */}
-                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>NizeShop</Link>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'inherit', display: 'flex', alignItems: 'center', marginLeft: '3em' }}>
+                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>NizeShop</Link>
                         </Typography>
-                        <Box sx={{ display: 'flex' }}>
-                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20px' }}>Home</Link>
-                            <Link to="/shop" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20px' }}>Shop</Link>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20px', display: 'flex', alignItems: 'center' }}>Home</Link>
+                            <Link to="/shop" style={{ textDecoration: 'none', color: 'inherit', marginRight: '20px', display: 'flex', alignItems: 'center' }}>Shop</Link>
                             <CartIcon />
                         </Box>
                     </Toolbar>

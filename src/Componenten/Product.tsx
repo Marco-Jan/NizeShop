@@ -33,7 +33,7 @@ export default function Product() {
 
   const handleAddToCart = () => {
     if (product) {
-      dispatch({ type: 'ADD_TO_CART', data: { ...product, title: product.title ?? '' } });
+      dispatch({ type: 'ADD_TO_CART', data: { ...product, title: product.title ?? '', image: product.image ?? '' } });
     }
   };
 
@@ -54,7 +54,7 @@ export default function Product() {
             component="img"
             image={product.image}
             alt={product.title}
-            sx={{ height: 'auto', width: '50%', objectFit: 'contain' }}
+            sx={{ height: 'auto', width: '50%', objectFit: 'contain', margin: 'auto', padding: '2.4em' }}
           />
         </Card>
       </Grid>

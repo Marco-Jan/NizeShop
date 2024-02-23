@@ -33,7 +33,7 @@ export default function ProductList() {
   }, [searchTerm]);
 
   const handleAddToCart = (product: Product) => {
-    dispatch({ type: 'ADD_TO_CART', data: { id: product.id, title: product.title ?? '', price: product.price, quantity: 1 } });
+    dispatch({ type: 'ADD_TO_CART', data: { id: product.id, title: product.title ?? '', price: product.price, quantity: 1, image: product.image! } });
   };
 
   const handleSearch = (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
@@ -42,13 +42,12 @@ export default function ProductList() {
     submit(formData, { method: 'get', action: '/shop' });
   };
 
-  const handleViewDetails = (productId: number) => {
-    navigate(`/product/${productId}`);
-    console.log('Product details:', productId);
 
-  }
+  const handleImageClick = (product: Product) => {
+    navigate(`/product/${product.id}`);
+  };
 
-  
+
   return (
     <>
       <CenteredContainer>
@@ -57,15 +56,16 @@ export default function ProductList() {
           <Button type="submit">Suchen</Button>
         </Form>
 
-        <Grid container spacing={3} sx={{ maxWidth: '1200px', margin: 'auto', padding: '10px' }}>
+        <Grid container spacing={3} sx={{ maxWidth: '1200px', margin: 'auto', padding: '5px' }}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={4} key={product.id}>
               <Card sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '300px', margin: 'auto', height: '100%' }}>
                 <CardMedia
                   component="img"
-                  sx={{ width: '80%', height: '200px', objectFit: 'contain', padding: '10px' }}
+                  sx={{ width: '80%', height: '200px', objectFit: 'contain', padding: '10px', cursor: 'pointer' }}
                   image={product.image}
                   alt={product.title}
+                  onClick={() => handleImageClick(product)}
                 />
                 <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <Typography gutterBottom variant="h6" component="h2" sx={{ fontSize: '1.25rem' }}>
@@ -77,17 +77,19 @@ export default function ProductList() {
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'center', paddingBottom: '16px' }}>
                   <Button
-                    sx={{ backgroundColor: '#696969', color: 'white', '&:hover': { backgroundColor: '#505050' } }}
+                    sx={{ color: 'white', '&:hover': { backgroundColor: '#505050' } }}
                     onClick={() => handleAddToCart(product)}
+                    variant='contained'
+                    color='secondary'
                   >
                     Add to cart
                   </Button>
-                  <Button
+                  {/* <Button
                     sx={{ marginLeft: '10px', backgroundColor: '#557C55', color: 'white', '&:hover': { backgroundColor: '#355E35' } }}
                     onClick={() => handleViewDetails(product.id)}
                   >
                     Mehr Details
-                  </Button>
+                  </Button> */}
                 </CardActions>
               </Card>
             </Grid>

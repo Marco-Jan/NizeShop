@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Navbar from './Navbar';
-import Homepage from './Homepage';
-import ProductList from './Shop';
-import ErrorPage from './ErrorComponent';
-import ShoppingCart from './ShoppingCart';
+import Navbar from './Componenten/RootElement';
+import Homepage from './Componenten/Homepage';
+import ProductList from './Componenten/Shop';
+import ErrorPage from './Componenten/ErrorComponent';
+import ShoppingCart from './Componenten/ShoppingCart';
+import Product from './Componenten/Product';
 
 
 
@@ -29,6 +30,11 @@ export default function Router() {
                     element: <ShoppingCart />,
                     errorElement: <ErrorPage />
                 },
+                {
+                    path: "/product/:productId",
+                    element: <Product />,
+                    errorElement: <ErrorPage />
+                }
                 
 
             ]

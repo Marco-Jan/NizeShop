@@ -9,10 +9,14 @@ export type Product = {
     quantity: number;
 };
 
-export async function getProducts() {
-    const product: Product[] = await fetch("https://fakestoreapi.com/products").then(
-        (res) => res.json() 
-    );
+export async function getProducts(searchTerm = '') {
+    const response = await fetch(`https://fakestoreapi.com/products`);
+    const products = await response.json();
+    if (!searchTerm) {
+        return products;
+    }
     
-    return product;
+    return products.filter((product: { title: string; }) => product.title.toLowerCase().includes(searchTerm.toLowerCase()));
 }
+
+  

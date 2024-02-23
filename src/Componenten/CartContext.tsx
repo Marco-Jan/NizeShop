@@ -8,8 +8,8 @@ export interface CartItem {
 
 }
 type CartAction =
-  | { type: 'ADD_TO_CART'; payload: CartItem }
-  | { type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_FROM_CART'; payload: { id: number } };
+  | { type: 'ADD_TO_CART'; data: CartItem }
+  | { type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_FROM_CART'; data: { id: number } };
 
 interface CartState {
   cart: CartItem[];
@@ -27,21 +27,21 @@ const initialState: CartState = {
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART': {
-      // Prüfe, ob das Produkt bereits im Warenkorb ist
-      const existingCartItem = state.cart.find(item => item.id === action.payload.id);
+   
+      const existingCartItem = state.cart.find(item => item.id === action.data.id);
       if (existingCartItem) {
-        // Wenn ja, erhöhe die Menge
+  
         return {
           ...state,
           cart: state.cart.map(item =>
-            item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === action.data.id ? { ...item, quantity: item.quantity + 1 } : item
           ),
         };
       } else {
-        // Wenn nicht, füge das neue Produkt hinzu
+    
         return {
           ...state,
-          cart: [...state.cart, { ...action.payload, quantity: 1 }]
+          cart: [...state.cart, { ...action.data, quantity: 1 }]
         };
       }
     }
@@ -49,7 +49,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return {
         ...state,
         cart: state.cart.map(item =>
-          item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === action.data.id ? { ...item, quantity: item.quantity + 1 } : item
         ),
       };
     }
@@ -57,14 +57,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return {
         ...state,
         cart: state.cart.map(item =>
-          item.id === action.payload.id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+          item.id === action.data.id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
         ),
       };
     }
     case 'REMOVE_FROM_CART': {
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== action.payload.id),
+        cart: state.cart.filter(item => item.id !== action.data.id),
       };
     }
     default:
@@ -74,20 +74,20 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 
 
-// Erstellen des Cart Contexts mit anfänglichem Zustand
+
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Custom Hook, um den Cart Context zu nutzen
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error('use within a CartProvider');
   }
   return context;
 };
 
-// Provider-Komponente mit Typisierung für die children-Prop
+
 interface CartProviderProps {
   children: ReactNode;
 }

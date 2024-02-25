@@ -5,8 +5,6 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useNavigate } from 'react-router-dom';
 
-
-
 export default function ShoppingCart() {
   const { state, dispatch } = useCart();
   const navigate = useNavigate();
@@ -26,13 +24,12 @@ export default function ShoppingCart() {
   const totalPrice = state.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   console.log(state.cart, 'state.cart');
 
-
   return (
-    <Box sx={{ flexGrow: 1, m: 3, color: '#213547' }}>
-      <Typography variant="h4" gutterBottom>
+    <Box sx={{ flexGrow: 1, m: 3, color: '#213547', display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
+      <Typography variant="h4" gutterBottom sx={{ marginLeft: '1.7%' }}>
         Warenkorb
       </Typography>
-      <Grid container spacing={4} >
+      <Grid container spacing={4}>
         <Grid item xs={12} md={8} sx={{ p: 3 }}>
           {state.cart.length > 0 ? (
             state.cart.map((item) => (
@@ -43,23 +40,23 @@ export default function ShoppingCart() {
                   image={item.image}
                   alt={item.title}
                 />
-                <CardContent sx={{ flex: '1 1 auto' }}>
+                <CardContent sx={{ flex: '1 1' }}>
                   <Typography variant="h5" component="div">
                     {item.title}
                   </Typography>
                   <Typography color="text.secondary">
                     Preis: ${item.price.toFixed(2)}
                   </Typography>
+                </CardContent>
+                <CardActions sx={{ flex: '1' }} disableSpacing>
+                  <IconButton onClick={() => handleDecreaseQuantity(item.id)} aria-label="decrease quantity">
+                    <RemoveCircleOutlineIcon />
+                  </IconButton>
                   <Typography color="text.secondary">
                     Menge: {item.quantity}
                   </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
                   <IconButton onClick={() => handleIncreaseQuantity(item.id)} aria-label="increase quantity">
                     <AddCircleOutlineIcon />
-                  </IconButton>
-                  <IconButton onClick={() => handleDecreaseQuantity(item.id)} aria-label="decrease quantity">
-                    <RemoveCircleOutlineIcon />
                   </IconButton>
                   <IconButton onClick={() => handleRemoveFromCart(item.id)} aria-label="remove from cart">
                     <DeleteIcon />
@@ -71,30 +68,30 @@ export default function ShoppingCart() {
             <Typography>Dein Warenkorb ist leer.</Typography>
           )}
         </Grid>
-        <Grid item xs={12} md={4} sx={{ bgcolor: 'white', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'start', padding: 0 }}>
-          <Card sx={{ mb: 2 }}>
-            <CardContent>
+        <Grid item xs={12} md={4} sx={{ p: 3 }}>
+          <Box sx={{ bgcolor: 'rgba(255, 255, 255, 0.9)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'start', padding: 2, borderRadius: '8px' }}>
+            <Card sx={{ mb: 2 }}>
+              <CardContent>
+                <Typography variant="h4">Preisauflistung</Typography>
+                {state.cart.map((item) => (
+                  <Typography key={item.id} sx={{ margin: '10px', fontSize: '20px' }}>
+                    {item.title}: ${item.price.toFixed(2)} x {item.quantity}
+                  </Typography>
+                ))}
+                <Typography variant="h5" sx={{ mt: 2 }}>
+                  Gesamtpreis: ${totalPrice.toFixed(2)}
+                </Typography>
+              </CardContent>
               <CardActions sx={{ justifyContent: 'flex-end' }}>
+                <Button variant="contained" color="secondary" sx={{ color: 'white', '&:hover': { backgroundColor: '#b3cde0' } }}>
+                  Zur Kassa
+                </Button>
                 <Button variant="contained" onClick={() => navigate(-1)}>Back to shop</Button>
               </CardActions>
-              <Typography variant="h4">Preisauflistung</Typography>
-              {state.cart.map((item) => (
-                <Typography key={item.id} sx={{ margin: '10px' }}>
-                  {item.title}: ${item.price.toFixed(2)} x {item.quantity}
-                </Typography>
-              ))}
-              <Typography variant="h5" sx={{ mt: 2 }}>
-                Gesamtpreis: ${totalPrice.toFixed(2)}
-              </Typography>
-            </CardContent>
-            <CardActions sx={{ justifyContent: 'flex-end' }}>
-              <Button variant="contained" color="primary">
-                Zur Kassa
-              </Button>
-            </CardActions>
-          </Card>
+            </Card>
+          </Box>
         </Grid>
-      </Grid>
+      </Grid >
     </Box>
   );
 }

@@ -42,13 +42,13 @@ const Footer = () => {
               Folge uns
             </Typography>
             <Box>
-              <Link href="https://www.instagram.com" color="inherit">
+              <Link href="https://www.instagram.com" color="inherit" target='_blank'>
                 <InstagramIcon sx={{ mr: 1 }} />
               </Link>
-              <Link href="https://www.facebook.com" color="inherit">
+              <Link href="https://www.facebook.com" color="inherit" target='_blank'>
                 <FacebookIcon sx={{ mx: 1 }} />
               </Link>
-              <Link href="https://www.twitter.com" color="inherit">
+              <Link href="https://www.twitter.com" color="inherit" target='_blank'>
                 <TwitterIcon sx={{ ml: 1 }} />
               </Link>
             </Box>

@@ -77,6 +77,7 @@ export default function Home() {
             '&:hover': {
               backgroundColor: '#b3cde0',
             },
+          marginBottom: '2em'
           }}
           onClick={() => navigate('/shop')}
         >
